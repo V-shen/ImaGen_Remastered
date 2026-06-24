@@ -11,3 +11,48 @@ pip freeze > checkpoint1_requirements.txt
 pip install -U "huggingface_hub[cli]"
 mkdir models\diffusion_models -Force
 hf download Comfy-Org/flux1-dev flux1-dev-fp8.safetensors --local-dir models\diffusion_models
+
+# PuLID Flux
+
+git clone https://github.com/if-ai/ComfyUI-PuLID-Flux-GR.git ComfyUI\custom_nodes\ComfyUI-PuLID-Flux-GR
+
+cd ComfyUI\custom_nodes\ComfyUI-PuLID-Flux-GR
+pip install -r requirements.txt
+
+create folders:
+models\pulid
+models\clip_vision
+models\insightface\models\antelopev2
+
+download:
+pulid_flux_v0.9.0.safetensors -> models\pulid
+
+download:
+EVA02_CLIP_L_336_psz14_s6B.pt -> models\clip_vision
+
+download AntelopeV2:
+1k3d68.onnx
+2d106det.onnx
+genderage.onnx
+glintr100.onnx
+scrfd_10g_bnkps.onnx
+
+put all in:
+models\insightface\models\antelopev2
+
+if original PuLID nodes break:
+use PuLID-Flux-GR nodes
+
+face_number = 0
+
+connect:
+Load Image -> image input of GR Apply PuLID Flux
+
+save workflow:
+ComfyUI\user\default\workflows
+
+backup:
+pip freeze > checkpoint_final_requirements.txt
+
+git tag v1.0-working
+git push origin v1.0-working
