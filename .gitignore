@@ -1,0 +1,32 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# ComfyUI outputs
+ComfyUI/output/
+ComfyUI/input/
+ComfyUI/temp/
+
+# Models
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.onnx
+*.gguf
+
+# HuggingFace cache
+.cache/
+
+# Archives
+*.zip
+*.7z
+*.rar
+
+# VS Code
+.vscode/
+
+# Windows
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,13 @@
+python -m venv venv
+.\venv\Scripts\activate
+git clone https://github.com/comfyanonymous/ComfyUI.git
+          cd--> pip install -r requirements.txt
+if torch is for cpu uninstall it-
+pip uninstall -y torch torchvision torchaudio
+for GPU- pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+
+pip freeze > checkpoint1_requirements.txt
+
+pip install -U "huggingface_hub[cli]"
+mkdir models\diffusion_models -Force
+hf download Comfy-Org/flux1-dev flux1-dev-fp8.safetensors --local-dir models\diffusion_models
